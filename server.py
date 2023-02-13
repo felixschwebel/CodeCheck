@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, url_for
 from flask_bootstrap import Bootstrap5
 from flask_wtf import FlaskForm
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -10,13 +10,13 @@ app = Flask(__name__)
 bootstrap = Bootstrap5()
 app.config['SECRET_KEY'] = os.environ['SECRET_KEY']
 
-login_manager = LoginManager()
-login_manager.init_app(app)
+# login_manager = LoginManager()
+# login_manager.init_app(app)
 
 
 @app.route("/")
 def home():
-    return render_template('index.html')
+    return render_template('account.html')
 
 
 if __name__ == '__main__':
