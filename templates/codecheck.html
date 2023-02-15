@@ -6,22 +6,43 @@
 
 <!-- content of the sidebar -->
 <div id="mySidenav" class="sidenav">
-  <a href="javascript:void(0)" class="closebtn item" onclick="closeNav()">&times;</a>
+   <a href="javascript:void(0)" class="closebtn item" onclick="closeNav()">
+    <img src="static/assets/icons/chevrons-right.png" alt="Home" width="15" height="15" class="d-inline-block align-text-center vertical-align">
+  </a>
   <a class="item" id="side-lan">Language</a>
   <a class="item" id="side-det">detected</a>
 
-  <a href="#">
-    <img src="static/assets/icons/settings.png" alt="Home" width="20" height="20" class="d-inline-block align-text-center vertical-align">
-    Settings</a>
-  <a href="#">
-    <img src="static/assets/icons/shield-lock.png" alt="Home" width="20" height="20" class="d-inline-block align-text-center vertical-align">
-    Security</a>
-  <a href="#">
-    <img src="static/assets/icons/calendar.png" alt="Home" width="20" height="20" class="d-inline-block align-text-center vertical-align">
-    Subscription</a>
-  <a href="#">
-    <img src="static/assets/icons/question.png" alt="Home" width="20" height="20" class="d-inline-block align-text-center vertical-align">
-    Support</a>
+  <div>
+    <select class="form-select" id="inputGroupSelectLanguage">
+      <option selected>Choose Language</option>
+      <option value="1">Python</option>
+      <option value="2">Java</option>
+      <option value="3">C</option>
+    </select>
+  </div>
+
+  <button class="btn codeg-menu codegenie">
+    code.<mark class="codeg-func">explain</mark>()
+    <div class="func-desc">Explain what this code is doing.</div>
+  </button>
+  <button class="btn codeg-menu codegenie">
+    code.<mark class="codeg-func">optimise</mark>()
+    <div class="func-desc">Optimise the code for runtime behavior and best practice standards.</div>
+  </button>
+  <button class="btn codeg-menu codegenie">
+    code.<mark class="codeg-func">fix_bugs</mark>()
+    <div class="func-desc">Fixes common bugs in your code.</div>
+  </button>
+  <button class="btn codeg-menu codegenie">
+    code.<mark class="codeg-func">docs</mark>()
+    <div class="func-desc">Generate documentation for your code.</div>
+  </button>
+  <button class="btn codeg-menu codegenie">
+    code.<mark class="codeg-func">convert</mark>()
+    <div class="func-desc">Convert your code into another language.</div>
+    Java
+  </button>
+
 </div>
 
 <!-- everything in this div will be pushed aside -->
@@ -35,21 +56,27 @@
 
       <ul class="nav justify-content-end">
         <li class="nav-item">
-          <a href="#" class="nav-link navigation-link">
-            <img src="static/assets/icons/file-code.png" alt="Home" width="23" height="23" class="d-inline-block align-text-center vertical-align">
+          <button type="button" class="nav-link navigation-link btn btn-outline-light">
+            <img src="static/assets/icons/file-code.png" alt="Home" width="18" height="18" class="d-inline-block align-text-center vertical-align">
             fizz_buzz.py
-          </a>
+          </button>
         </li>
         <li>
           <a href="#" class="nav-link navigation-link">
-            <img src="static/assets/icons/github.png" alt="Home" width="23" height="23" class="d-inline-block align-text-center vertical-align">
+            <img src="static/assets/icons/github.png" alt="Home" width="18" height="18" class="d-inline-block align-text-center vertical-align">
             gituser/FizzBuzz-Rep
           </a>
         </li>
         <li>
+          <a href="#" class="nav-link navigation-link">
+            <img src="static/assets/icons/home.png" alt="Home" width="18" height="18" class="d-inline-block align-text-center vertical-align">
+            Home
+          </a>
+        </li>
+        <li>
           <a onclick="openNav()" class="nav-link navigation-link">
-            <img src="static/assets/icons/home.png" alt="Home" width="23" height="23" class="d-inline-block align-text-center vertical-align">
-            username
+            <img src="static/assets/icons/settings.png" alt="Home" width="18" height="18" class="d-inline-block align-text-center vertical-align">
+            Settings
           </a>
         </li>
       </ul>
