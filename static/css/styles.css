@@ -9,6 +9,7 @@ mark {
     background-color: transparent;
 }
 
+
 .vertical-align {
     vertical-align:middle;
 }
@@ -24,6 +25,14 @@ mark {
 #logo {
     font-weight: 400;
     color: white;
+}
+
+.navigation-link {
+  color: white;
+}
+
+.navigation-link:hover {
+  color: gray;
 }
 
 /*____________________________________________________________*/
@@ -47,7 +56,7 @@ mark {
   padding: 15px 0px 15px 50px;
   text-decoration: none;
   font-size: 16px;
-  color: #818181;
+  color: white;
   display: block;
   transition: 0.3s;
   vertical-align: middle;
@@ -71,7 +80,7 @@ mark {
 
 /* Hover effect */
 .sidenav a:hover {
-  color: #f1f1f1;
+  color: gray;
 }
 
 /* Position and style the close button */
