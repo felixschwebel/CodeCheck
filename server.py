@@ -16,6 +16,11 @@ app.config['SECRET_KEY'] = os.environ['SECRET_KEY']
 
 @app.route("/")
 def home():
+    return render_template('account.html')
+
+
+@app.route("/codecheck")
+def codecheck():
     return render_template('codecheck.html')
 
 
