@@ -19,8 +19,8 @@ CODEMIRROR_LANGUAGES = ['python', 'yaml', 'htmlembedded']
 WTF_CSRF_ENABLED = True
 SECRET_KEY = 'secret'
 # optional
-# CODEMIRROR_THEME = '3024-day'
-# CODEMIRROR_ADDONS = (('ADDON_DIR', 'ADDON_NAME'),)
+CODEMIRROR_THEME = 'darcula'
+CODEMIRROR_ADDONS = (('ADDON_DIR', 'ADDON_NAME'),)
 
 # ------- Flask App -------
 app = Flask(__name__)
