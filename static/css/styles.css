@@ -152,9 +152,6 @@ button:hover {
   color: gray;
 }
 
-.sidenav .chev-btn:hover {
-  color: gray !important;
-}
 
 /* Position and style the close button */
 .sidenav .closebtn {

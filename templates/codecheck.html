@@ -1,92 +1,102 @@
 {% extends "bootstrap/base.html" %}
 
-{% block style %} {% endblock %}
+{% block style %} {{ codemirror.include_codemirror() }} {% endblock %}
 
 {% block body %}
 
-<!-- content of the sidebar -->
-<div id="mySidenav" class="sidenav">
-   <a href="javascript:void(0)" class="closebtn item" onclick="closeNav()">
-    <img src="static/assets/icons/chevrons-right.png" alt="Home" width="15" height="15" class="d-inline-block align-text-center vertical-align chev-btn">
-  </a>
-  <a class="item" id="side-lan">Language</a>
-  <a class="item" id="side-det">detected</a>
+<!-- ------------- NAVBAR & SIDEBAR ------------- -->
+  <!-- content of the sidebar -->
+  <div id="mySidenav" class="sidenav">
+     <a href="javascript:void(0)" class="closebtn item" onclick="closeNav()">
+      <img src="static/assets/icons/chevrons-right.png" alt="Home" width="15" height="15" class="d-inline-block align-text-center vertical-align chev-btn">
+    </a>
+    <a class="item" id="side-lan">Language</a>
+    <a class="item" id="side-det">detected</a>
 
-  <div>
-    <select class="form-select" id="inputGroupSelectLanguage">
-      <option selected>Choose Language</option>
-      <option value="Python">Python</option>
-      <option value="Java">Java</option>
-      <option value="C">C</option>
-    </select>
+    <div>
+      <select class="form-select" id="inputGroupSelectLanguage">
+        <option selected>Choose Language</option>
+        <option value="Python">Python</option>
+        <option value="Java">Java</option>
+        <option value="C">C</option>
+      </select>
+    </div>
+
+    <button class="btn codeg-menu codegenie">
+      code.<mark class="codeg-func">explain</mark>()
+      <div class="func-desc">Explain what this code is doing.</div>
+    </button>
+    <button class="btn codeg-menu codegenie">
+      code.<mark class="codeg-func">optimise</mark>()
+      <div class="func-desc">Optimise the code for runtime behavior and best practice standards.</div>
+    </button>
+    <button class="btn codeg-menu codegenie">
+      code.<mark class="codeg-func">fix_bugs</mark>()
+      <div class="func-desc">Fixes common bugs in your code.</div>
+    </button>
+    <button class="btn codeg-menu codegenie">
+      code.<mark class="codeg-func">docs</mark>()
+      <div class="func-desc">Generate documentation for your code.</div>
+    </button>
+    <button class="btn codeg-menu codegenie">
+      code.<mark class="codeg-func">convert</mark>()
+      <div class="func-desc">Convert your code into another language.</div>
+    </button>
+
+    <a class="item">
+      <img src="static/assets/icons/info.png" alt="Info" width="18" height="18" class="d-inline-block align-text-center">
+    </a>
+
   </div>
 
-  <button class="btn codeg-menu codegenie">
-    code.<mark class="codeg-func">explain</mark>()
-    <div class="func-desc">Explain what this code is doing.</div>
-  </button>
-  <button class="btn codeg-menu codegenie">
-    code.<mark class="codeg-func">optimise</mark>()
-    <div class="func-desc">Optimise the code for runtime behavior and best practice standards.</div>
-  </button>
-  <button class="btn codeg-menu codegenie">
-    code.<mark class="codeg-func">fix_bugs</mark>()
-    <div class="func-desc">Fixes common bugs in your code.</div>
-  </button>
-  <button class="btn codeg-menu codegenie">
-    code.<mark class="codeg-func">docs</mark>()
-    <div class="func-desc">Generate documentation for your code.</div>
-  </button>
-  <button class="btn codeg-menu codegenie">
-    code.<mark class="codeg-func">convert</mark>()
-    <div class="func-desc">Convert your code into another language.</div>
-  </button>
+  <!-- everything in this div will be pushed aside -->
+  <div id="main">
+    <nav class="navbar">
+      <div class="container-fluid">
+        <a id="logo" class="navbar-brand" href="#">
+          <img src="static/assets/logo.png" alt="codeGenie() Logo" width="40" height="40" class="d-inline-block align-text-middle">
+          code<mark>Genie</mark>()
+        </a>
 
-  <a class="item">
-    <img src="static/assets/icons/info.png" alt="Info" width="18" height="18" class="d-inline-block align-text-center">
-  </a>
+        <ul class="nav justify-content-end">
+          <li class="nav-item">
+            <button type="button" class="nav-link navigation-link btn btn-outline-light">
+              <img src="static/assets/icons/file-code.png" alt="Home" width="18" height="18" class="d-inline-block align-text-center vertical-align">
+              fizz_buzz.py
+            </button>
+          </li>
+          <li>
+            <a href="#" class="nav-link navigation-link">
+              <img src="static/assets/icons/github.png" alt="Home" width="18" height="18" class="d-inline-block align-text-center vertical-align">
+              gituser/FizzBuzz-Rep
+            </a>
+          </li>
+          <li>
+            <a href="{{ url_for('home') }}" class="nav-link navigation-link">
+              <img src="static/assets/icons/home.png" alt="Home" width="18" height="18" class="d-inline-block align-text-center vertical-align">
+              Home
+            </a>
+          </li>
+          <li>
+            <a onclick="openNav()" class="nav-link navigation-link">
+              <img src="static/assets/icons/settings.png" alt="Home" width="18" height="18" class="d-inline-block align-text-center vertical-align">
+              Settings
+            </a>
+          </li>
+        </ul>
 
-</div>
+      </div>
+    </nav>
+  </div>
 
-<!-- everything in this div will be pushed aside -->
-<div id="main">
-  <nav class="navbar">
-    <div class="container-fluid">
-      <a id="logo" class="navbar-brand" href="#">
-        <img src="static/assets/logo.png" alt="codeGenie() Logo" width="40" height="40" class="d-inline-block align-text-middle">
-        code<mark>Genie</mark>()
-      </a>
+<!-- ------------- PAGE CONTENT ------------- -->
 
-      <ul class="nav justify-content-end">
-        <li class="nav-item">
-          <button type="button" class="nav-link navigation-link btn btn-outline-light">
-            <img src="static/assets/icons/file-code.png" alt="Home" width="18" height="18" class="d-inline-block align-text-center vertical-align">
-            fizz_buzz.py
-          </button>
-        </li>
-        <li>
-          <a href="#" class="nav-link navigation-link">
-            <img src="static/assets/icons/github.png" alt="Home" width="18" height="18" class="d-inline-block align-text-center vertical-align">
-            gituser/FizzBuzz-Rep
-          </a>
-        </li>
-        <li>
-          <a href="{{ url_for('home') }}" class="nav-link navigation-link">
-            <img src="static/assets/icons/home.png" alt="Home" width="18" height="18" class="d-inline-block align-text-center vertical-align">
-            Home
-          </a>
-        </li>
-        <li>
-          <a onclick="openNav()" class="nav-link navigation-link">
-            <img src="static/assets/icons/settings.png" alt="Home" width="18" height="18" class="d-inline-block align-text-center vertical-align">
-            Settings
-          </a>
-        </li>
-      </ul>
-
-    </div>
-  </nav>
-</div>
+  <!-- CodeMirror -->
+  <form method="POST">
+    {{ code_form.csrf_token }}
+    {{ code_form.source_code }}
+    <input type="submit" value="OK">
+  </form>
 
 
 
