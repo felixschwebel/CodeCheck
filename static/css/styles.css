@@ -31,8 +31,24 @@ mark {
 
 #code-field {
   margin-top: 1.5em;
-  width: 50%;
+  width: 100%;
   background-color: black;
+}
+
+.info-tile {
+  margin: 1.5em 0.2em;
+  padding: 2em;
+  background-color: #1F1F1F;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px 5px rgba(104, 103, 103, 0.53);
+}
+
+.info-tile-head {
+
+}
+
+.info-tile-content {
+
 }
 
 .CodeMirror {
