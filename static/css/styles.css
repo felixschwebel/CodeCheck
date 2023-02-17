@@ -35,16 +35,31 @@ mark {
   background-color: black;
 }
 
+.close-tile {
+  text-decoration: none;
+  color: #959595;
+  font-size: 25px;
+  font-weight: 100;
+  position: absolute;
+  right: 2.2em;
+  margin-top: -0.15em;
+}
+
 .info-tile {
-  margin: 1.5em 0.2em;
-  padding: 2em;
+  margin: 1.5em 0.1em;
+  padding: 1.5em 2.5em;
   background-color: #1F1F1F;
   border-radius: 20px;
   box-shadow: 0 4px 10px 5px rgba(104, 103, 103, 0.53);
 }
 
 .info-tile-head {
+  font-size: 22px;
+  padding-bottom: 1em;
+}
 
+.info-tile-head img {
+  margin-bottom: 5px;
 }
 
 .info-tile-content {
