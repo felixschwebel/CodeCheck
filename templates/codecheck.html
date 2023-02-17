@@ -87,16 +87,30 @@
 
       </div>
     </nav>
+
+  <!-- ------------- PAGE CONTENT ------------- -->
+
+    <!-- CodeMirror -->
+
+      <form method="POST">
+        <div id="code-field">
+          {{ code_form.csrf_token }}
+          {{ code_form.source_code }}
+        </div>
+
+        <input type="submit" value="OK">
+
+      </form>
+
+
+
+
+
+
   </div>
 
-<!-- ------------- PAGE CONTENT ------------- -->
 
-  <!-- CodeMirror -->
-  <form method="POST">
-    {{ code_form.csrf_token }}
-    {{ code_form.source_code }}
-    <input type="submit" value="OK">
-  </form>
+
 
 
 

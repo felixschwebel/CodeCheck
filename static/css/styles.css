@@ -29,6 +29,21 @@ mark {
     border-radius: 20px;
 }
 
+#code-field {
+  margin-top: 1.5em;
+  width: 50%;
+  background-color: black;
+}
+
+.CodeMirror {
+  height: 85vh!important;
+  background-color: black!important;
+}
+
+.CodeMirror-gutters {
+  background-color: #2b2b2b!important;
+}
+
 #logo {
     font-weight: 400;
     color: white;
