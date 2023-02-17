@@ -10,11 +10,20 @@
      <a href="javascript:void(0)" class="closebtn item" onclick="closeNav()">
       <img src="static/assets/icons/chevrons-right.png" alt="Home" width="15" height="15" class="d-inline-block align-text-center vertical-align chev-btn">
     </a>
-    <a class="item" id="side-lan">Language</a>
-    <a class="item" id="side-det">detected</a>
+
+    <div class="row">
+      <div class="col-6">
+        <a class="item" id="side-lan">Language</a>
+        <a class="item" id="side-det">detected</a>
+      </div>
+      <div class="col-6 language-icon">
+        <img src="static/assets/icons/python.png" alt="Python" width="30" height="30" class="d-inline-block align-text-center vertical-align chev-btn">
+      </div>
+    </div>
+
 
     <div>
-      <select class="form-select" id="inputGroupSelectLanguage">
+      <select class="form-select language-select" id="inputGroupSelectLanguage">
         <option selected>Choose Language</option>
         <option value="Python">Python</option>
         <option value="Java">Java</option>
@@ -43,7 +52,7 @@
       <div class="func-desc">Convert your code into another language.</div>
     </button>
 
-    <a class="item">
+    <a href="#" class="item" id="info-point">
       <img src="static/assets/icons/info.png" alt="Info" width="18" height="18" class="d-inline-block align-text-center">
     </a>
 
@@ -57,6 +66,7 @@
           <img src="static/assets/logo.png" alt="codeGenie() Logo" width="40" height="40" class="d-inline-block align-text-middle">
           code<mark>Genie</mark>()
         </a>
+
 
         <ul class="nav justify-content-end">
           <li class="nav-item">
@@ -79,8 +89,8 @@
           </li>
           <li>
             <a onclick="openNav()" class="nav-link navigation-link">
-              <img src="static/assets/icons/settings.png" alt="Home" width="18" height="18" class="d-inline-block align-text-center vertical-align">
-              Settings
+              <img src="static/assets/icons/flame.png" alt="Home" width="18" height="18" class="d-inline-block align-text-center vertical-align">
+              Functions
             </a>
           </li>
         </ul>
@@ -124,6 +134,16 @@
             <p>
               Finally, the function is called with an argument of 100, which generates the Fizz Buzz sequence up to 100.
             </p>
+          </div>
+
+          <div class="info-tile-footer">
+            <a href="#">
+              <img src="static/assets/icons/bookmark-add.png" alt="Logo" width="18" height="18" class="d-inline-block">
+              Save information
+            </a>
+            <a href="#">
+              <img src="static/assets/icons/more-vertical.png" alt="Logo" width="15" height="15" class="d-inline-block" id="more-vertical">
+            </a>
           </div>
 
         </div>
