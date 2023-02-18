@@ -4,41 +4,57 @@
 
 {% block body %}
 
-<!-- content of the sidebar -->
+<!-- ------------------------- SIDEBAR ------------------------- -->
+
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn item" onclick="closeNav()">
-    <img src="static/assets/icons/chevrons-right.png" alt="Home" width="15" height="15" class="d-inline-block align-text-center vertical-align">
+    <img src="static/assets/icons/chevrons-right.png" alt="chevrons" width="15" height="15" class="d-inline-block align-text-center vertical-align">
   </a>
+
+  <!-- ------------------------ Sidebar Head -->
   <a class="item" id="side-title">Account</a>
   <a class="item" id="side-sub">Premium</a>
 
+  <!-- ------------------------ Sidebar Options -->
+
+  <!-- ------------- Settings -->
   <a href="#">
-    <img src="static/assets/icons/settings.png" alt="Home" width="20" height="20" class="d-inline-block align-text-center vertical-align">
+    <img src="static/assets/icons/settings.png" alt="Settings" width="20" height="20" class="d-inline-block align-text-center vertical-align">
     Settings</a>
+  <!-- ------------- Security -->
   <a href="#">
-    <img src="static/assets/icons/shield-lock.png" alt="Home" width="20" height="20" class="d-inline-block align-text-center vertical-align">
+    <img src="static/assets/icons/shield-lock.png" alt="Security" width="20" height="20" class="d-inline-block align-text-center vertical-align">
     Security</a>
+  <!-- ------------- Subscription -->
   <a href="#">
-    <img src="static/assets/icons/calendar.png" alt="Home" width="20" height="20" class="d-inline-block align-text-center vertical-align">
+    <img src="static/assets/icons/calendar.png" alt="Subscription" width="20" height="20" class="d-inline-block align-text-center vertical-align">
     Subscription</a>
+  <!-- ------------- Support -->
   <a href="#">
-    <img src="static/assets/icons/question.png" alt="Home" width="20" height="20" class="d-inline-block align-text-center vertical-align">
+    <img src="static/assets/icons/question.png" alt="Support" width="20" height="20" class="d-inline-block align-text-center vertical-align">
     Support</a>
+
 </div>
+
 
 <!-- everything in this div will be pushed aside -->
 <div id="main">
+
+  <!-- ------------------------- NAVIGATION BAR ------------------------- -->
   <nav class="navbar">
     <div class="container-fluid">
+
+      <!-- ------------- Logo -->
       <a id="logo" class="navbar-brand" href="#">
         <img src="static/assets/logo.png" alt="codeGenie() Logo" width="40" height="40" class="d-inline-block align-text-middle">
         code<mark>Genie</mark>()
       </a>
 
+      <!-- ------------------------ Navbar items -->
       <ul class="nav justify-content-end">
         <li class="nav-item">
           <a onclick="openNav()" class="nav-link navigation-link">
-            <img src="static/assets/icons/home.png" alt="Home" width="18" height="18" class="d-inline-block align-text-center vertical-align">
+            <img src="static/assets/icons/home.png" alt="userprofile" width="18" height="18" class="d-inline-block align-text-center vertical-align">
             username
           </a>
         </li>
@@ -46,8 +62,11 @@
 
     </div>
   </nav>
+
 </div>
 
+
+<!-- *************** TEST LINK (REMOVE LATER!) *************** -->
 <a href="{{ url_for('codecheck') }}">TEST CODE CHECK</a>
 
 
