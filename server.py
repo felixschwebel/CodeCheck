@@ -7,6 +7,8 @@ from flask_wtf import FlaskForm
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin, login_user, LoginManager, login_required, current_user, logout_user
 import os
+import requests
+import openai
 
 # ---------------------------- CONFIGURATIONS ------------------------
 # CodeMirror Settings
@@ -29,6 +31,7 @@ class CodeForm(FlaskForm):
 
 # ---------------------------- FLASK APP ------------------------------
 app = Flask(__name__)
+openai.api_key = os.environ["OPENAI_API_KEY"]
 app.config['SECRET_KEY'] = os.environ['SECRET_KEY']
 app.config.from_object(__name__)
 
@@ -47,11 +50,46 @@ def home():
 def codecheck():
     code_form = CodeForm()
     if code_form.validate_on_submit():
-        print(request.form.get('button-id'))
-        print(code_form.source_code.data)
+
+        # get the form parameters
+        func_type = request.form.get('button-id')
+        input_code = code_form.source_code.data
+
+
+        # code.explain() - function
+        if func_type == 'FUNC-EXPLAIN':
+            response = requests.get(url='https://api.npoint.io/8d0ad4e4d436c98cad0f').json()['FizzBuzz']
+            return render_template('codecheck.html', code_form=code_form, response=response, func_type='explain')
+
     return render_template('codecheck.html', code_form=code_form)
 
 
 # ---------------------------- RUN SERVER ------------------------------
 if __name__ == '__main__':
     app.run(debug=True)
+
+
+# def index():
+#     if request.method == "POST":
+#         animal = request.form["animal"]
+#         response = openai.Completion.create(
+#             model="text-davinci-003",
+#             prompt=generate_prompt(animal),
+#             temperature=0.6,
+#         )
+#         return redirect(url_for("index", result=response.choices[0].text))
+#
+#     result = request.args.get("result")
+#     return render_template("index.html", result=result)
+#
+#
+# def generate_prompt(animal):
+#     return """Suggest three names for an animal that is a superhero.
+#
+# Animal: Cat
+# Names: Captain Sharpclaw, Agent Fluffball, The Incredible Feline
+# Animal: Dog
+# Names: Ruff the Protector, Wonder Canine, Sir Barks-a-Lot
+# Animal: {}
+# Names:""".format(
+#         animal.capitalize()
