@@ -55,10 +55,11 @@ def codecheck():
         func_type = request.form.get('button-id')
         input_code = code_form.source_code.data
 
+
         # code.explain() - function
         if func_type == 'FUNC-EXPLAIN':
             response = requests.get(url='https://api.npoint.io/8d0ad4e4d436c98cad0f').json()['FizzBuzz']
-            return render_template('codecheck.html', code_form=code_form, response=response)
+            return render_template('codecheck.html', code_form=code_form, response=response, func_type='explain')
 
     return render_template('codecheck.html', code_form=code_form)
 

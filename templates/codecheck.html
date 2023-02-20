@@ -135,52 +135,48 @@
       </div>
 
       <!-- ------------------------ Info Tiles -->
-      <div class="col-6">
-        <div class="info-tile">
+      {% if response: %}
+        <div class="col-6">
+          <div class="info-tile">
 
-          <!-- ------------- Info Tile Headline -->
-          <div class="info-tile-head">
-            <img src="static/assets/icons/flame.png" alt="Logo" width="25" height="25" class="d-inline-block align-text-center">
-            code.<mark class="codeg-func">explain</mark>()
-            <a href="#" class="close-tile">&times;</a>
+            <!-- ------------- Info Tile Headline -->
+            <div class="info-tile-head">
+              <img src="static/assets/icons/flame.png" alt="Logo" width="25" height="25" class="d-inline-block align-text-center">
+              code.<mark class="codeg-func">{{func_type}}</mark>()
+              <a href="#" class="close-tile">&times;</a>
+            </div>
+
+            <!-- ------------- Info Tile Content -->
+            <div class="info-tile-content">
+              {{ response }}
+<!--              <p>The code defines a function fizz_buzz(n) that takes in a single argument n, which represents the number up to which the Fizz Buzz sequence should be generated. The function uses a for loop to iterate through the range of numbers from 1 to n+1. For each number in the range, the code uses a set of if-elif-else statements to determine whether the number should be printed as "Fizz", "Buzz", "FizzBuzz", or the number itself.</p>-->
+<!--              <ul>-->
+<!--                <li>If i is divisible by 15 (i.e., the remainder when i is divided by 15 is 0), the code prints "FizzBuzz".</li>-->
+<!--                <li>If i is divisible by 3 but not by 15, the code prints "Fizz".</li>-->
+<!--                <li>If i is divisible by 5 but not by 15 or 3, the code prints "Buzz".</li>-->
+<!--                <li>If i is not divisible by either 3 or 5, the code simply prints the number itself.</li>-->
+<!--              </ul>-->
+<!--              <p>-->
+<!--                Finally, the function is called with an argument of 100, which generates the Fizz Buzz sequence up to 100.-->
+<!--              </p>-->
+            </div>
+
+            <!-- ------------- Info Tile Footer -->
+            <div class="info-tile-footer">
+              <a href="#">
+                <img src="static/assets/icons/bookmark-add.png" alt="Logo" width="18" height="18" class="d-inline-block">
+                Save information
+              </a>
+              <a href="#">
+                <img src="static/assets/icons/more-vertical.png" alt="Logo" width="15" height="15" class="d-inline-block" id="more-vertical">
+              </a>
+            </div>
+
           </div>
-
-          <!-- ------------- Info Tile Content -->
-          <div class="info-tile-content">
-            <p>The code defines a function fizz_buzz(n) that takes in a single argument n, which represents the number up to which the Fizz Buzz sequence should be generated. The function uses a for loop to iterate through the range of numbers from 1 to n+1. For each number in the range, the code uses a set of if-elif-else statements to determine whether the number should be printed as "Fizz", "Buzz", "FizzBuzz", or the number itself.</p>
-            <ul>
-              <li>If i is divisible by 15 (i.e., the remainder when i is divided by 15 is 0), the code prints "FizzBuzz".</li>
-              <li>If i is divisible by 3 but not by 15, the code prints "Fizz".</li>
-              <li>If i is divisible by 5 but not by 15 or 3, the code prints "Buzz".</li>
-              <li>If i is not divisible by either 3 or 5, the code simply prints the number itself.</li>
-            </ul>
-            <p>
-              Finally, the function is called with an argument of 100, which generates the Fizz Buzz sequence up to 100.
-            </p>
-          </div>
-
-          <!-- ------------- Info Tile Footer -->
-          <div class="info-tile-footer">
-            <a href="#">
-              <img src="static/assets/icons/bookmark-add.png" alt="Logo" width="18" height="18" class="d-inline-block">
-              Save information
-            </a>
-            <a href="#">
-              <img src="static/assets/icons/more-vertical.png" alt="Logo" width="15" height="15" class="d-inline-block" id="more-vertical">
-            </a>
-          </div>
-
         </div>
-      </div>
+      {% endif %}
+
     </div>
-
-
-  <!-- TEST DIV -->
-  <div>
-    {% if response: %}
-    {{ response }}
-    {% endif %}
-  </div>
 
 </div>
 
