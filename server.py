@@ -2,7 +2,7 @@ from flask import Flask, render_template, url_for, request
 from flask_bootstrap import Bootstrap5
 from flask_codemirror import CodeMirror
 from flask_codemirror.fields import CodeMirrorField
-from wtforms.fields import SubmitField
+from wtforms.fields import SubmitField, StringField
 from flask_wtf import FlaskForm
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin, login_user, LoginManager, login_required, current_user, logout_user
@@ -47,8 +47,8 @@ def home():
 def codecheck():
     code_form = CodeForm()
     if code_form.validate_on_submit():
-        text = code_form.source_code.data
-        print(text)
+        print(request.form.get('button-id'))
+        print(code_form.source_code.data)
     return render_template('codecheck.html', code_form=code_form)
 
 
