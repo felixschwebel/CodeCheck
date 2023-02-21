@@ -1,8 +1,8 @@
-from flask import Flask, render_template, url_for, request
+from flask import Flask, render_template, url_for, request, flash
 from flask_bootstrap import Bootstrap5
 from flask_codemirror import CodeMirror
 from flask_codemirror.fields import CodeMirrorField
-from wtforms.fields import SubmitField, StringField
+from wtforms.fields import SubmitField
 from flask_wtf import FlaskForm
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin, login_user, LoginManager, login_required, current_user, logout_user
@@ -54,11 +54,16 @@ def codecheck():
         # get the form parameters
         func_type = request.form.get('button-id')
         input_code = code_form.source_code.data
+        if input_code == '':
+            flash('Sorry! There is no code here.')
+            return render_template('codecheck.html', code_form=code_form)
 
+        print(input_code)
 
         # code.explain() - function
         if func_type == 'FUNC-EXPLAIN':
             response = requests.get(url='https://api.npoint.io/8d0ad4e4d436c98cad0f').json()['FizzBuzz']
+            print(response)
             return render_template('codecheck.html', code_form=code_form, response=response, func_type='explain')
 
     return render_template('codecheck.html', code_form=code_form)

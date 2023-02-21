@@ -293,3 +293,8 @@ button:hover {
   margin-top: -0.15em;
   float:right;
 }
+
+/* Error Flash Messages */
+.error-flash {
+  color: red;
+}
