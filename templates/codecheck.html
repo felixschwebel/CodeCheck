@@ -135,8 +135,31 @@
       </div>
 
       <!-- ------------------------ Info Tiles -->
-      {% if response: %}
+
         <div class="col-6">
+
+          <!-- Flask-Flash messages -->
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            {% for message in messages: %}
+              <div class="info-tile">
+
+                <!-- ------------- Info Tile Headline -->
+                <div class="info-tile-head">
+                  <a href="#" class="close-tile">&times;</a>
+                </div>
+
+                <!-- ------------- Info Tile Content -->
+                <div class="info-tile-content">
+                  <p class="error-flash">{{ message }}</p>
+                </div>
+              </div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+
+        {% if response: %}
+
           <div class="info-tile">
 
             <!-- ------------- Info Tile Headline -->
@@ -171,10 +194,11 @@
                 <img src="static/assets/icons/more-vertical.png" alt="Logo" width="15" height="15" class="d-inline-block" id="more-vertical">
               </a>
             </div>
-
           </div>
+
+          {% endif %}
+
         </div>
-      {% endif %}
 
     </div>
 
