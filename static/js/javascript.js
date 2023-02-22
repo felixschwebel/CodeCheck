@@ -29,3 +29,28 @@ buttons.forEach(function(button) {
         submitFormButton.click();
     });
 });
+
+
+
+
+$(document).ready(function() {
+  // Add event listener to the Add Tile button
+  $('#add-tile').click(function() {
+    // Generate a new tile with a unique ID
+    var tile_id = 'tile-' + $('.tile').length;
+    var tile_html = '<div class="tile" id="' + tile_id + '">' +
+                    '<h3>' + tile_id + '</h3>' +
+                    '<button type="button" class="close" data-dismiss="alert">&times;</button>' +
+                    '<p>This is the content of ' + tile_id + '.</p>' +
+                    '</div>';
+
+    // Add the new tile to the tile container
+    $('.tile-container').append(tile_html);
+  });
+
+  // Add event listener to the Close button of each tile
+  $('.tile .close').click(function() {
+    // Remove the parent tile from the DOM
+    $(this).closest('.tile').remove();
+  });
+});

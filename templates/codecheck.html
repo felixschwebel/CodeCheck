@@ -136,7 +136,7 @@
 
       <!-- ------------------------ Info Tiles -->
 
-        <div class="col-6">
+        <div class="col-6 container tile-container">
 
           <!-- Flask-Flash messages -->
         {% with messages = get_flashed_messages() %}
@@ -158,20 +158,38 @@
           {% endif %}
         {% endwith %}
 
-        {% if response: %}
 
-          <div class="info-tile">
+        <!--
+
+              <button class="btn btn-primary" id="add-tile">Add Tile</button>
+
+
+                {% for tile in tiles %}
+                  <div class="tile">
+                    <h3>{{ tile['title'] }}</h3>
+                    <button type="button" class="close">&times;</button>
+                    <p>{{ tile['content'] }}</p>
+                  </div>
+                {% endfor %}
+
+        -->
+
+
+        {% if tiles: %}
+          {% for tile in tiles %}
+
+          <div class="info-tile tile">
 
             <!-- ------------- Info Tile Headline -->
             <div class="info-tile-head">
               <img src="static/assets/icons/flame.png" alt="Logo" width="25" height="25" class="d-inline-block align-text-center">
-              code.<mark class="codeg-func">{{func_type}}</mark>()
-              <a href="#" class="close-tile">&times;</a>
+              code.<mark class="codeg-func">{{ tile['title'] }}</mark>()
+              <button type="button" class="close-tile close">&times;</button>
             </div>
 
             <!-- ------------- Info Tile Content -->
             <div class="info-tile-content">
-              {{ response }}
+              {{ tile['content'] }}
 <!--              <p>The code defines a function fizz_buzz(n) that takes in a single argument n, which represents the number up to which the Fizz Buzz sequence should be generated. The function uses a for loop to iterate through the range of numbers from 1 to n+1. For each number in the range, the code uses a set of if-elif-else statements to determine whether the number should be printed as "Fizz", "Buzz", "FizzBuzz", or the number itself.</p>-->
 <!--              <ul>-->
 <!--                <li>If i is divisible by 15 (i.e., the remainder when i is divided by 15 is 0), the code prints "FizzBuzz".</li>-->
@@ -196,7 +214,8 @@
             </div>
           </div>
 
-          {% endif %}
+          {% endfor %}
+        {% endif %}
 
         </div>
 

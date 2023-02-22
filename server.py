@@ -18,6 +18,7 @@ SECRET_KEY = os.environ['SECRET_KEY']
 CODEMIRROR_THEME = 'darcula'
 CODEMIRROR_ADDONS = (('ADDON_DIR', 'ADDON_NAME'),)
 
+
 # LoginManager
 # login_manager = LoginManager()
 # login_manager.init_app(app)
@@ -48,12 +49,19 @@ def home():
 
 @app.route("/codecheck", methods=['GET', 'POST'])
 def codecheck():
+    tiles = [
+        {'title': 'Tile 1', 'content': 'This is the content of tile 1.'},
+        {'title': 'Tile 2', 'content': 'This is the content of tile 2.'},
+        {'title': 'Tile 3', 'content': 'This is the content of tile 3.'}
+    ]
+
     code_form = CodeForm()
     if code_form.validate_on_submit():
 
         # get the form parameters
         func_type = request.form.get('button-id')
         input_code = code_form.source_code.data
+
         if input_code == '':
             flash('Sorry! There is no code here.')
             return render_template('codecheck.html', code_form=code_form)
@@ -66,13 +74,12 @@ def codecheck():
             print(response)
             return render_template('codecheck.html', code_form=code_form, response=response, func_type='explain')
 
-    return render_template('codecheck.html', code_form=code_form)
+    return render_template('codecheck.html', code_form=code_form, tiles=tiles)
 
 
 # ---------------------------- RUN SERVER ------------------------------
 if __name__ == '__main__':
     app.run(debug=True)
-
 
 # def index():
 #     if request.method == "POST":
