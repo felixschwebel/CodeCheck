@@ -41,6 +41,9 @@ bootstrap = Bootstrap5(app)
 codemirror = CodeMirror(app)
 
 
+tiles = []
+
+
 # ---------------------------- ROUTING --------------------------------
 @app.route("/")
 def home():
@@ -49,32 +52,32 @@ def home():
 
 @app.route("/codecheck", methods=['GET', 'POST'])
 def codecheck():
-    tiles = [
-        {'title': 'Tile 1', 'content': 'This is the content of tile 1.'},
-        {'title': 'Tile 2', 'content': 'This is the content of tile 2.'},
-        {'title': 'Tile 3', 'content': 'This is the content of tile 3.'}
-    ]
-
     code_form = CodeForm()
     if code_form.validate_on_submit():
 
         # get the form parameters
         func_type = request.form.get('button-id')
         input_code = code_form.source_code.data
+        print(func_type)
 
-        if input_code == '':
-            flash('Sorry! There is no code here.')
-            return render_template('codecheck.html', code_form=code_form)
-
-        print(input_code)
+        # if input_code == '':
+        #     flash('Sorry! There is no code here.')
+        #     return render_template('codecheck.html', code_form=code_form)
 
         # code.explain() - function
         if func_type == 'FUNC-EXPLAIN':
             response = requests.get(url='https://api.npoint.io/8d0ad4e4d436c98cad0f').json()['FizzBuzz']
-            print(response)
-            return render_template('codecheck.html', code_form=code_form, response=response, func_type='explain')
+            tiles.append({'title': 'explain', 'content': response})
+            return render_template('codecheck.html', code_form=code_form, tiles=tiles)
 
     return render_template('codecheck.html', code_form=code_form, tiles=tiles)
+
+
+@app.route('/delete_tile', methods=['POST'])
+def delete_tile():
+    i = request.form['id']
+    tiles.pop(int(i) - 1)
+    return ''
 
 
 # ---------------------------- RUN SERVER ------------------------------

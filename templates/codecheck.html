@@ -159,22 +159,6 @@
         {% endwith %}
 
 
-        <!--
-
-              <button class="btn btn-primary" id="add-tile">Add Tile</button>
-
-
-                {% for tile in tiles %}
-                  <div class="tile">
-                    <h3>{{ tile['title'] }}</h3>
-                    <button type="button" class="close">&times;</button>
-                    <p>{{ tile['content'] }}</p>
-                  </div>
-                {% endfor %}
-
-        -->
-
-
         {% if tiles: %}
           {% for tile in tiles %}
 
@@ -183,8 +167,8 @@
             <!-- ------------- Info Tile Headline -->
             <div class="info-tile-head">
               <img src="static/assets/icons/flame.png" alt="Logo" width="25" height="25" class="d-inline-block align-text-center">
-              code.<mark class="codeg-func">{{ tile['title'] }}</mark>()
-              <button type="button" class="close-tile close">&times;</button>
+              code.<mark class="codeg-func">{{tile['title']}}</mark>()
+              <button type="button" class="close-tile" data-id="{{loop.index}}">&times;</button>
             </div>
 
             <!-- ------------- Info Tile Content -->

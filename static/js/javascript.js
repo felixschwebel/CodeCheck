@@ -32,7 +32,7 @@ buttons.forEach(function(button) {
 
 
 
-
+/* Manage the tiles */
 $(document).ready(function() {
   // Add event listener to the Add Tile button
   $('#add-tile').click(function() {
@@ -40,7 +40,7 @@ $(document).ready(function() {
     var tile_id = 'tile-' + $('.tile').length;
     var tile_html = '<div class="tile" id="' + tile_id + '">' +
                     '<h3>' + tile_id + '</h3>' +
-                    '<button type="button" class="close" data-dismiss="alert">&times;</button>' +
+                    '<button type="button" class="close-tile" data-dismiss="alert">&times;</button>' +
                     '<p>This is the content of ' + tile_id + '.</p>' +
                     '</div>';
 
@@ -49,8 +49,15 @@ $(document).ready(function() {
   });
 
   // Add event listener to the Close button of each tile
-  $('.tile .close').click(function() {
-    // Remove the parent tile from the DOM
-    $(this).closest('.tile').remove();
+  $('.close-tile').click(function() {
+      var id = $(this).data('id');
+      $(this).closest('.tile').remove();
+      $.ajax({
+        url: '/delete_tile',
+        type: 'POST',
+        data: { id: id },
+      });
+      // Remove the parent tile from the DOM
+      $(this).closest('.tile').remove();
   });
 });

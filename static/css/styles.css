@@ -292,6 +292,8 @@ button:hover {
   font-weight: 100;
   margin-top: -0.15em;
   float:right;
+  background: transparent;
+  border: none!important;
 }
 
 /* Error Flash Messages */
