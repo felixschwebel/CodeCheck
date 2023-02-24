@@ -58,7 +58,6 @@ def codecheck():
         # get the form parameters
         func_type = request.form.get('button-id')
         input_code = code_form.source_code.data
-        print(func_type)
 
         # if input_code == '':
         #     flash('Sorry! There is no code here.')
@@ -66,9 +65,30 @@ def codecheck():
 
         # code.explain() - function
         if func_type == 'FUNC-EXPLAIN':
-            response = requests.get(url='https://api.npoint.io/8d0ad4e4d436c98cad0f').json()['FizzBuzz']
+            response = 'This explains the code.'
             tiles.append({'title': 'explain', 'content': response})
-            return render_template('codecheck.html', code_form=code_form, tiles=tiles)
+
+        # code.optimise() - function
+        if func_type == 'FUNC-OPTIMISE':
+            response = 'This optimises the code.'
+            tiles.append({'title': 'optimise', 'content': response})
+
+        # code.fix_bugs() - function
+        if func_type == 'FUNC-BUG':
+            response = 'This fixes bugs in the code.'
+            tiles.append({'title': 'fix_bugs', 'content': response})
+
+        # code.docs() - function
+        if func_type == 'FUNC-DOC':
+            response = 'This documents the code.'
+            tiles.append({'title': 'docs', 'content': response})
+
+        # code.convert() - function
+        if func_type == 'FUNC-CONV':
+            response = 'This converts the code.'
+            tiles.append({'title': 'convert', 'content': response})
+
+        return render_template('codecheck.html', code_form=code_form, tiles=tiles)
 
     return render_template('codecheck.html', code_form=code_form, tiles=tiles)
 
