@@ -52,8 +52,9 @@ def home():
 
 @app.route("/codecheck", methods=['GET', 'POST'])
 def codecheck():
+    print(tiles)
     code_form = CodeForm()
-    if code_form.validate_on_submit():
+    if code_form.validate_on_submit() and request.method == 'POST':
 
         # get the form parameters
         func_type = request.form.get('button-id')
@@ -96,7 +97,10 @@ def codecheck():
 @app.route('/delete_tile', methods=['POST'])
 def delete_tile():
     i = request.form['id']
-    tiles.pop(int(i) - 1)
+    print(tiles)
+    print(i)
+    tiles.remove(tiles[int(i)-1])
+    #tiles.pop(int(i) - 1)
     return ''
 
 
