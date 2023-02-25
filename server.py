@@ -57,7 +57,6 @@ def codecheck():
     if request.method == 'GET':
         # get the selected language
         session['selected_language'] = request.args.get('language-options')
-        print(session.get('selected_language'))
 
     if code_form.validate_on_submit() and request.method == 'POST':
 

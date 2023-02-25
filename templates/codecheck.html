@@ -22,7 +22,13 @@
 
     <!-- ------------- Language Icon -->
     <div class="col-6 language-icon">
-      <img src="static/assets/icons/python.png" alt="Python" width="30" height="30" class="d-inline-block align-text-center vertical-align chev-btn">
+      {% if selected_language == 'Python' %}
+        <img src="static/assets/icons/languages/python.png" alt="Python" width="30" height="30" class="d-inline-block align-text-center vertical-align chev-btn">
+      {% elif selected_language == 'Java' %}
+        <img src="static/assets/icons/languages/java.png" alt="Python" width="30" height="30" class="d-inline-block align-text-center vertical-align chev-btn">
+      {% elif selected_language == 'C' %}
+        <img src="static/assets/icons/languages/C.png" alt="Python" width="30" height="30" class="d-inline-block align-text-center vertical-align chev-btn">
+      {% endif %}
     </div>
 
   </div>
