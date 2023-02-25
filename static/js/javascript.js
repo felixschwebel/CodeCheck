@@ -35,7 +35,7 @@ if (isSidebarOpen()) {
 
 /* Map the sidebar buttons to the submit form of the CodeMirror field */
 const buttons = document.querySelectorAll('.FUNC-BTN');
-const form = document.querySelector('form');
+const form = document.querySelector('#CodeMirror');
 const submitFormButton = document.getElementById('CALL-FUNCTION');
 
 buttons.forEach(function(button) {

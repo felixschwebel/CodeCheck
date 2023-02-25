@@ -54,15 +54,16 @@ def home():
 def codecheck():
     code_form = CodeForm()
 
-    if request.method == 'GET':
-        # get the selected language
-        session['selected_language'] = request.args.get('language-options')
+    # get the selected language
+    session['selected_language'] = request.args.get('language-options')
 
     if code_form.validate_on_submit() and request.method == 'POST':
 
         # get the form parameters
         func_type = request.form.get('button-id')
         input_code = code_form.source_code.data
+        print(func_type)
+        print(input_code)
 
         # if input_code == '':
         #     flash('Sorry! There is no code here.')
