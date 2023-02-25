@@ -1,12 +1,35 @@
 /* Side navigation */
 function openNav() {
-  document.getElementById("mySidenav").style.width = "300px";
-  document.getElementById("main").style.marginRight = "300px";
+    document.cookie = "sidebarOpen=true";
+    document.getElementById("mySidenav").style.width = "300px";
+    document.getElementById("main").style.marginRight = "300px";
 }
 
 function closeNav() {
-  document.getElementById("mySidenav").style.width = "0";
-  document.getElementById("main").style.marginRight = "0";
+    document.cookie = "sidebarOpen=false";
+    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("main").style.marginRight = "0";
+}
+
+function isSidebarOpen() {
+  var cookies = document.cookie.split(';');
+  for (var i = 0; i < cookies.length; i++) {
+    var cookie = cookies[i].trim();
+    if (cookie.startsWith('sidebarOpen=')) {
+      return cookie.substring('sidebarOpen='.length) === 'true';
+    }
+   }
+  return false;
+}
+
+if (isSidebarOpen()) {
+  // Add no-animation class to disable opening animation on page load
+  document.getElementById("mySidenav").classList.add("no-animation");
+  openNav();
+  // Remove no-animation class after a short delay to re-enable the animation
+  setTimeout(function() {
+    document.getElementById("mySidenav").classList.remove("no-animation");
+  }, 500);
 }
 
 

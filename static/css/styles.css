@@ -201,6 +201,10 @@ button:hover {
   background-color: #6F6F6F !important;
 }
 
+.no-animation {
+    transition: none !important;
+}
+
 /* Description */
 
 .func-desc {
