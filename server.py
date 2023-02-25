@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, request, flash
+from flask import Flask, render_template, url_for, request, flash, session
 from flask_bootstrap import Bootstrap5
 from flask_codemirror import CodeMirror
 from flask_codemirror.fields import CodeMirrorField
@@ -52,8 +52,13 @@ def home():
 
 @app.route("/codecheck", methods=['GET', 'POST'])
 def codecheck():
-    print(tiles)
     code_form = CodeForm()
+
+    if request.method == 'GET':
+        # get the selected language
+        session['selected_language'] = request.args.get('language-options')
+        print(session.get('selected_language'))
+
     if code_form.validate_on_submit() and request.method == 'POST':
 
         # get the form parameters
@@ -89,18 +94,19 @@ def codecheck():
             response = 'This converts the code.'
             tiles.append({'title': 'convert', 'content': response})
 
-        return render_template('codecheck.html', code_form=code_form, tiles=tiles)
+        return render_template('codecheck.html', code_form=code_form, tiles=tiles, selected_language=session.get('selected_language'))
 
-    return render_template('codecheck.html', code_form=code_form, tiles=tiles)
+    return render_template('codecheck.html', code_form=code_form, tiles=tiles, selected_language=session.get('selected_language'))
 
 
 @app.route('/delete_tile', methods=['POST'])
 def delete_tile():
-    i = request.form['id']
-    print(tiles)
-    print(i)
-    tiles.remove(tiles[int(i)-1])
-    #tiles.pop(int(i) - 1)
+    global tiles
+    if len(tiles) == 1:
+        tiles = []
+    else:
+        i = request.form['id']
+        tiles.remove(tiles[int(i)-1])
     return ''
 
 

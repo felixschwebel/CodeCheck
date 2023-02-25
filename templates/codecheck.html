@@ -17,7 +17,7 @@
     <!-- ------------- Headlines -->
     <div class="col-6">
       <a class="item" id="side-lan">Language</a>
-      <a class="item" id="side-det">detected</a>
+      <a class="item" id="side-det"></a>
     </div>
 
     <!-- ------------- Language Icon -->
@@ -29,12 +29,14 @@
 
   <!-- ------------------------ Language Selection -->
   <div>
-    <select class="form-select " id="inputGroupSelectLanguage">
-      <option selected>Choose Language</option>
-      <option value="Python">Python</option>
-      <option value="Java">Java</option>
-      <option value="C">C</option>
-    </select>
+    <form id="inputGroupFormLanguage">
+      <select class="form-select " id="inputGroupSelectLanguage" name="language-options">
+        <option value="default" {% if selected_language == "none" %}selected {% endif %}>Choose Language</option>
+        <option value="Python" {% if selected_language == "Python" %}selected {% endif %}>Python</option>
+        <option value="Java" {% if selected_language == "Java" %}selected {% endif %}>Java</option>
+        <option value="C" {% if selected_language == "C" %}selected {% endif %}>C</option>
+      </select>
+    </form>
   </div>
 
   <!-- ------------------------ Functionalities -->

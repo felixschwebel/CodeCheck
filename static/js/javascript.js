@@ -31,6 +31,12 @@ buttons.forEach(function(button) {
 });
 
 
+/* Get the selected language */
+document.getElementById('inputGroupSelectLanguage').addEventListener('change', function() {
+    document.getElementById('inputGroupFormLanguage').submit();
+  });
+
+
 
 /* Manage the tiles */
 $(document).ready(function() {
