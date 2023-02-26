@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, request, flash, session
+from flask import Flask, render_template, url_for, request, flash, session, make_response
 from flask_bootstrap import Bootstrap5
 from flask_codemirror import CodeMirror
 from flask_codemirror.fields import CodeMirrorField
@@ -93,8 +93,6 @@ def codecheck():
         if func_type == 'FUNC-CONV':
             response = 'This converts the code.'
             tiles.append({'title': 'convert', 'content': response})
-
-        return render_template('codecheck.html', code_form=code_form, tiles=tiles, selected_language=session.get('selected_language'))
 
     return render_template('codecheck.html', code_form=code_form, tiles=tiles, selected_language=session.get('selected_language'))
 
