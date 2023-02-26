@@ -40,7 +40,6 @@ app.config.from_object(__name__)
 bootstrap = Bootstrap5(app)
 codemirror = CodeMirror(app)
 
-
 tiles = []
 
 
@@ -65,9 +64,9 @@ def codecheck():
         print(func_type)
         print(input_code)
 
-        # if input_code == '':
-        #     flash('Sorry! There is no code here.')
-        #     return render_template('codecheck.html', code_form=code_form)
+        if input_code == '':
+            flash('Sorry! There is no code here.')
+            return render_template('codecheck.html', code_form=code_form)
 
         # code.explain() - function
         if func_type == 'FUNC-EXPLAIN':
@@ -94,7 +93,8 @@ def codecheck():
             response = 'This converts the code.'
             tiles.append({'title': 'convert', 'content': response})
 
-    return render_template('codecheck.html', code_form=code_form, tiles=tiles, selected_language=session.get('selected_language'))
+    return render_template('codecheck.html', code_form=code_form, tiles=tiles,
+                           selected_language=session.get('selected_language'))
 
 
 @app.route('/delete_tile', methods=['POST'])
@@ -104,7 +104,7 @@ def delete_tile():
         tiles = []
     else:
         i = request.form['id']
-        tiles.remove(tiles[int(i)-1])
+        tiles.remove(tiles[int(i) - 1])
     return ''
 
 
