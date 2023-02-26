@@ -41,33 +41,42 @@
 <div id="main">
 
   <!-- ------------------------- NAVIGATION BAR ------------------------- -->
-  <nav class="navbar">
-    <div class="container-fluid">
+  <div class="top-bar">
+    <nav class="navbar">
+      <div class="container-fluid">
 
-      <!-- ------------- Logo -->
-      <a id="logo" class="navbar-brand" href="#">
-        <img src="static/assets/logo.png" alt="codeGenie() Logo" width="40" height="40" class="d-inline-block align-text-middle">
-        code<mark>Genie</mark>()
-      </a>
+        <!-- ------------- Logo -->
+        <a id="logo" class="navbar-brand" href="#">
+          <img src="static/assets/logo.png" alt="codeGenie() Logo" width="40" height="40" class="d-inline-block align-text-middle">
+          code<mark>Genie</mark>()
+        </a>
 
-      <!-- ------------------------ Navbar items -->
-      <ul class="nav justify-content-end">
-        <li class="nav-item">
-          <a onclick="openNav()" class="nav-link navigation-link">
-            <img src="static/assets/icons/home.png" alt="userprofile" width="18" height="18" class="d-inline-block align-text-center vertical-align">
-            username
-          </a>
-        </li>
-      </ul>
+        <!-- ------------------------ Navbar items -->
+        <ul class="nav justify-content-end">
+          <li class="nav-item">
+            <a onclick="openNav()" class="nav-link navigation-link">
+              <img src="static/assets/icons/home.png" alt="userprofile" width="18" height="18" class="d-inline-block align-text-center vertical-align">
+              username
+            </a>
+          </li>
+        </ul>
+
+      </div>
+    </nav>
+  </div>
+
+  <!-- ------------------------- PAGE CONTENT ------------------------- -->
+    <div class="page-content">
+
+      <!-- *************** TEST LINK (REMOVE LATER!) *************** -->
+      <a href="{{ url_for('codecheck') }}">TEST CODE CHECK</a>
 
     </div>
-  </nav>
 
 </div>
 
 
-<!-- *************** TEST LINK (REMOVE LATER!) *************** -->
-<a href="{{ url_for('codecheck') }}">TEST CODE CHECK</a>
+
 
 
 {% endblock %}

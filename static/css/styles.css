@@ -6,6 +6,10 @@ body {
     font-family: 'Roboto Mono', monospace;
 }
 
+.page-content {
+    padding: 95px 20px 0 20px;
+}
+
 /* Logo */
 
 mark {
@@ -24,9 +28,15 @@ mark {
 
 .navbar {
   background-color: #1F1F1F;
-  margin: 0em;
   padding: 0.8em 1.5em 0.8em 1em;
   border-radius: 20px;
+}
+
+.top-bar {
+    background-color: transparent;
+    padding: 20px;
+    position: fixed;
+    width: 100%;
 }
 
 /* Navbar items */
@@ -53,7 +63,6 @@ mark {
 /* Style page content */
 #main {
   transition: margin-left .5s;
-  padding: 20px;
 }
 
 /* On smaller screens, where height is less than 450px, change the style of the sidenav */
@@ -235,8 +244,9 @@ button:hover {
 
 #code-field {
   margin-top: 1.5em;
-  width: 100%;
+  width: 48.5%;
   background-color: black;
+  position: fixed;
 }
 
 

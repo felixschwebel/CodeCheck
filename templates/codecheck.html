@@ -79,129 +79,134 @@
 <div id="main">
 
   <!-- ------------------------- NAVIGATION BAR ------------------------- -->
-  <nav class="navbar">
-      <div class="container-fluid">
+  <div class="top-bar">
+    <nav class="navbar">
+        <div class="container-fluid">
 
-        <!-- ------------- Logo -->
-        <a id="logo" class="navbar-brand" href="#">
-          <img src="static/assets/logo.png" alt="codeGenie() Logo" width="40" height="40" class="d-inline-block align-text-middle">
-          code<mark>Genie</mark>()
-        </a>
+          <!-- ------------- Logo -->
+          <a id="logo" class="navbar-brand" href="#">
+            <img src="static/assets/logo.png" alt="codeGenie() Logo" width="40" height="40" class="d-inline-block align-text-middle">
+            code<mark>Genie</mark>()
+          </a>
 
-        <!-- ------------------------ Navbar items -->
-        <ul class="nav justify-content-end">
+          <!-- ------------------------ Navbar items -->
+          <ul class="nav justify-content-end">
 
-          <!-- ------------- File Selection-->
-          <li class="nav-item">
-            <button type="button" class="nav-link navigation-link btn btn-outline-light">
-              <img src="static/assets/icons/file-code.png" alt="code-file-select" width="18" height="18" class="d-inline-block align-text-center vertical-align">
-              fizz_buzz.py
-            </button>
-          </li>
+            <!-- ------------- File Selection-->
+            <li class="nav-item">
+              <button type="button" class="nav-link navigation-link btn btn-outline-light">
+                <img src="static/assets/icons/file-code.png" alt="code-file-select" width="18" height="18" class="d-inline-block align-text-center vertical-align">
+                fizz_buzz.py
+              </button>
+            </li>
 
-          <!-- ------------- GitHub integration-->
-          <li>
-            <a href="#" class="nav-link navigation-link">
-              <img src="static/assets/icons/github.png" alt="GitHub Integration" width="18" height="18" class="d-inline-block align-text-center vertical-align">
-              gituser/FizzBuzz-Rep
-            </a>
-          </li>
+            <!-- ------------- GitHub integration-->
+            <li>
+              <a href="#" class="nav-link navigation-link">
+                <img src="static/assets/icons/github.png" alt="GitHub Integration" width="18" height="18" class="d-inline-block align-text-center vertical-align">
+                gituser/FizzBuzz-Rep
+              </a>
+            </li>
 
-          <!-- ------------- Home -->
-          <li>
-            <a href="{{ url_for('home') }}" class="nav-link navigation-link">
-              <img src="static/assets/icons/home.png" alt="Home" width="18" height="18" class="d-inline-block align-text-center vertical-align">
-              Home
-            </a>
-          </li>
+            <!-- ------------- Home -->
+            <li>
+              <a href="{{ url_for('home') }}" class="nav-link navigation-link">
+                <img src="static/assets/icons/home.png" alt="Home" width="18" height="18" class="d-inline-block align-text-center vertical-align">
+                Home
+              </a>
+            </li>
 
-          <!-- ------------- Functionalities -->
-          <li>
-            <a onclick="openNav()" class="nav-link navigation-link">
-              <img src="static/assets/icons/flame.png" alt="Functionalities" width="18" height="18" class="d-inline-block align-text-center vertical-align">
-              Functions
-            </a>
-          </li>
-        </ul>
+            <!-- ------------- Functionalities -->
+            <li>
+              <a onclick="openNav()" class="nav-link navigation-link">
+                <img src="static/assets/icons/flame.png" alt="Functionalities" width="18" height="18" class="d-inline-block align-text-center vertical-align">
+                Functions
+              </a>
+            </li>
+          </ul>
 
-      </div>
-    </nav>
+        </div>
+      </nav>
+    </div>
 
   <!-- ------------------------- PAGE CONTENT ------------------------- -->
-    <div class="row">
+    <div class="page-content">
 
-      <!-- ------------------------ CodeMirror -->
-      <div class="col-6">
-        <form method="POST" id="CodeMirror">
-          <div id="code-field">
-            {{ code_form.csrf_token }}
-            {{ code_form.source_code }}
+      <div class="row">
+
+          <!-- ------------------------ CodeMirror -->
+          <div class="col-6">
+            <form method="POST" id="CodeMirror">
+              <div id="code-field">
+                {{ code_form.csrf_token }}
+                {{ code_form.source_code }}
+              </div>
+
+              <input type="submit" id="CALL-FUNCTION" style="display:none">
+            </form>
           </div>
 
-          <input type="submit" id="CALL-FUNCTION" style="display:none">
-        </form>
-      </div>
+          <!-- ------------------------ Info Tiles -->
 
-      <!-- ------------------------ Info Tiles -->
+            <div class="col-6 container tile-container">
 
-        <div class="col-6 container tile-container">
+              <!-- Flask-Flash messages -->
+            {% with messages = get_flashed_messages() %}
+              {% if messages %}
+                {% for message in messages: %}
+                  <div class="info-tile">
 
-          <!-- Flask-Flash messages -->
-        {% with messages = get_flashed_messages() %}
-          {% if messages %}
-            {% for message in messages: %}
-              <div class="info-tile">
+                    <!-- ------------- Info Tile Headline -->
+                    <div class="info-tile-head">
+                      <a href="#" class="close-tile">&times;</a>
+                    </div>
+
+                    <!-- ------------- Info Tile Content -->
+                    <div class="info-tile-content">
+                      <p class="error-flash">{{ message }}</p>
+                    </div>
+                  </div>
+                {% endfor %}
+              {% endif %}
+            {% endwith %}
+
+
+            {% if tiles: %}
+              {% for tile in tiles %}
+
+              <div class="info-tile tile">
 
                 <!-- ------------- Info Tile Headline -->
                 <div class="info-tile-head">
-                  <a href="#" class="close-tile">&times;</a>
+                  <img src="static/assets/icons/flame.png" alt="Logo" width="25" height="25" class="d-inline-block align-text-center">
+                  code.<mark class="codeg-func">{{tile['title']}}</mark>()
+                  <button type="button" class="close-tile" data-id="{{loop.index}}">&times;</button>
                 </div>
 
                 <!-- ------------- Info Tile Content -->
                 <div class="info-tile-content">
-                  <p class="error-flash">{{ message }}</p>
+                  {{ tile['content'] }}
+                </div>
+
+                <!-- ------------- Info Tile Footer -->
+                <div class="info-tile-footer">
+                  <a href="#">
+                    <img src="static/assets/icons/bookmark-add.png" alt="Logo" width="18" height="18" class="d-inline-block">
+                    Save information
+                  </a>
+                  <a href="#">
+                    <img src="static/assets/icons/more-vertical.png" alt="Logo" width="15" height="15" class="d-inline-block" id="more-vertical">
+                  </a>
                 </div>
               </div>
-            {% endfor %}
-          {% endif %}
-        {% endwith %}
 
+              {% endfor %}
+            {% endif %}
 
-        {% if tiles: %}
-          {% for tile in tiles %}
-
-          <div class="info-tile tile">
-
-            <!-- ------------- Info Tile Headline -->
-            <div class="info-tile-head">
-              <img src="static/assets/icons/flame.png" alt="Logo" width="25" height="25" class="d-inline-block align-text-center">
-              code.<mark class="codeg-func">{{tile['title']}}</mark>()
-              <button type="button" class="close-tile" data-id="{{loop.index}}">&times;</button>
             </div>
-
-            <!-- ------------- Info Tile Content -->
-            <div class="info-tile-content">
-              {{ tile['content'] }}
-            </div>
-
-            <!-- ------------- Info Tile Footer -->
-            <div class="info-tile-footer">
-              <a href="#">
-                <img src="static/assets/icons/bookmark-add.png" alt="Logo" width="18" height="18" class="d-inline-block">
-                Save information
-              </a>
-              <a href="#">
-                <img src="static/assets/icons/more-vertical.png" alt="Logo" width="15" height="15" class="d-inline-block" id="more-vertical">
-              </a>
-            </div>
-          </div>
-
-          {% endfor %}
-        {% endif %}
-
         </div>
 
-    </div>
+      </div>
 
 </div>
 

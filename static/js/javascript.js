@@ -1,14 +1,19 @@
 /* Side navigation */
+const sidebar = document.querySelector('#mySidenav');
+const fixedDiv = document.querySelector('#code-field');
+
 function openNav() {
     document.cookie = "sidebarOpen=true";
     document.getElementById("mySidenav").style.width = "300px";
     document.getElementById("main").style.marginRight = "300px";
+    fixedDiv.style.width = '40.5%';
 }
 
 function closeNav() {
     document.cookie = "sidebarOpen=false";
     document.getElementById("mySidenav").style.width = "0";
     document.getElementById("main").style.marginRight = "0";
+    fixedDiv.style.width = '48.5%';
 }
 
 function isSidebarOpen() {
