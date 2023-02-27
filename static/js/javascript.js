@@ -1,12 +1,14 @@
 /* Side navigation */
 const sidebar = document.querySelector('#mySidenav');
 const fixedDiv = document.querySelector('#code-field');
+const fixedNav = document.querySelector('.top-bar')
 
 function openNav() {
     document.cookie = "sidebarOpen=true";
     document.getElementById("mySidenav").style.width = "300px";
     document.getElementById("main").style.marginRight = "300px";
     fixedDiv.style.width = '40.5%';
+    fixedNav.style.width = '84.5%';
 }
 
 function closeNav() {
@@ -14,6 +16,7 @@ function closeNav() {
     document.getElementById("mySidenav").style.width = "0";
     document.getElementById("main").style.marginRight = "0";
     fixedDiv.style.width = '48.5%';
+    fixedNav.style.width = '100%';
 }
 
 function isSidebarOpen() {
