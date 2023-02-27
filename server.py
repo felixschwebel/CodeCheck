@@ -61,11 +61,17 @@ def codecheck():
         # get the form parameters
         func_type = request.form.get('button-id')
         input_code = code_form.source_code.data
+
         print(func_type)
         print(input_code)
+        print(session.get('selected_language'))
 
+        # Flash messages
         if input_code == '':
             flash('Sorry! There is no code here.')
+
+        elif session.get('selected_language') is None:
+            flash('Sorry! Please select your programming language.')
 
         else:
 
