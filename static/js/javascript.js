@@ -1,4 +1,5 @@
 /* Side navigation */
+
 const sidebar = document.querySelector('#mySidenav');
 const fixedDiv = document.querySelector('#code-field');
 const fixedNav = document.querySelector('.top-bar')
@@ -42,6 +43,7 @@ if (isSidebarOpen()) {
 
 
 /* Map the sidebar buttons to the submit form of the CodeMirror field */
+
 const buttons = document.querySelectorAll('.FUNC-BTN');
 const form = document.querySelector('#CodeMirror');
 const submitFormButton = document.getElementById('CALL-FUNCTION');
@@ -63,6 +65,7 @@ buttons.forEach(function(button) {
 
 
 /* Get the selected language */
+
 document.getElementById('inputGroupSelectLanguage').addEventListener('change', function() {
     document.getElementById('inputGroupFormLanguage').submit();
   });
@@ -70,6 +73,7 @@ document.getElementById('inputGroupSelectLanguage').addEventListener('change', f
 
 
 /* Manage the tiles */
+
 $(document).ready(function() {
   // Add event listener to the Add Tile button
   $('#add-tile').click(function() {
@@ -97,4 +101,15 @@ $(document).ready(function() {
       // Remove the parent tile from the DOM
       $(this).closest('.tile').remove();
   });
+});
+
+
+/* Trigger flash modal */
+const modalButton = document.getElementById('modal-button');
+$(document).ready(function() {
+    var messages = "{{ get_flashed_messages() }}";
+
+    if (typeof messages != 'undefined' && messages != '[]') {
+        modalButton.click()
+    };
 });

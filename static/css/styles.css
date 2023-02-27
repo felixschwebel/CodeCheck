@@ -22,6 +22,35 @@ mark {
   color: white;
 }
 
+/* --------------- MODAL --------------- */
+
+.modal-content {
+  background-color: #FF8718;
+  color: black;
+  border-radius: 15px;
+  padding: 1.5em;
+}
+
+.btn-modal {
+  background-color: #1F1F1F;
+  color: white;
+}
+
+.modal-title {
+  font-weight: 800;
+}
+
+.modal-header {
+  border: none;
+}
+
+.modal-body {
+  border: none;
+}
+
+.modal-footer {
+  border: none;
+}
 
 
 /* --------------- NAVBAR --------------- */
