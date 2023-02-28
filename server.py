@@ -67,11 +67,13 @@ def codecheck():
         print(session.get('selected_language'))
 
         # Flash messages
-        if input_code == '':
-            flash('Sorry! There is no code here.')
-
-        elif session.get('selected_language') is None:
-            flash('Sorry! Please select your programming language.')
+        if session.get('selected_language') is None:
+            if input_code == '':
+                flash('Please select your programming language and provide some code.')
+            else:
+                flash('Please select your programming language.')
+        elif input_code == '':
+            flash('Please provide some code!')
 
         else:
 
