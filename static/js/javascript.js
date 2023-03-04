@@ -9,7 +9,7 @@ function openNav() {
     document.getElementById("mySidenav").style.width = "300px";
     document.getElementById("main").style.marginRight = "300px";
     fixedDiv.style.width = '40.5%';
-    fixedNav.style.width = '84.5%';
+    fixedNav.style.width = '83%';
 }
 
 function closeNav() {
