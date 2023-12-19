@@ -1,6 +1,6 @@
 Flask==2.2.3
 WTForms~=3.0.1
-Werkzeug==2.2.3
+Werkzeug==2.3.8
 autopep8==2.0.1
 certifi==2022.12.7
 charset-normalizer==3.0.1
