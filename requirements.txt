@@ -19,5 +19,5 @@ pycodestyle==2.10.0
 python-dateutil==2.8.2
 python-dotenv==0.21.1
 pytz==2022.7.1
-urllib3==1.26.18
+urllib3==1.26.19
 requests==2.32.0
